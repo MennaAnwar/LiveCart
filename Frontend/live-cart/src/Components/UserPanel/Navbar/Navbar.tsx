@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import cart from "../../../img/shopping-cart.png";
 import "./Navbar.css";
 import SearchBar from "./SearchBar";
+import Categories from "../Categories/Categories";
 
 const Nav: FC = () => {
   const [isActive, setIsActive] = useState(false);
@@ -86,6 +87,7 @@ const Nav: FC = () => {
           <SearchBar />
         </div>
       </nav>
+      <Categories />
     </header>
   );
 };
