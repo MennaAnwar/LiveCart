@@ -7,6 +7,7 @@ import Mobiles from "../../../img/mobiles.png";
 import automotive from "../../../img/automotive.png";
 import motorcycles from "../../../img/motorbike.png";
 import beautyandcare from "../../../img/beautyandhealth.png";
+import groceries from "../../../img/groceries.png";
 
 const Data = [
   { cat: "Categories", icon: Categories },
@@ -18,5 +19,6 @@ const Data = [
   { cat: "Accessories", icon: accessories },
   { cat: "AutoMotive", icon: automotive },
   { cat: "Motorcycles", icon: motorcycles },
+  { cat: "Groceries", icon: groceries },
 ];
 export default Data;

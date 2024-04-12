@@ -10,7 +10,7 @@ const Categories: FC = () => {
   return (
     <>
       <Swiper
-        slidesPerView={5}
+        slidesPerView={8}
         spaceBetween={30}
         pagination={{
           clickable: true,
