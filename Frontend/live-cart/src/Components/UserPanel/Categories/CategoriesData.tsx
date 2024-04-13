@@ -1,24 +1,44 @@
 import Categories from "../../../img/categories.png";
 import Home from "../../../img/Home.png";
-import accessories from "../../../img/accessories.png";
 import clothes from "../../../img/clothes.png";
 import electronics from "../../../img/electronics.png";
-import Mobiles from "../../../img/mobiles.png";
 import automotive from "../../../img/automotive.png";
-import motorcycles from "../../../img/motorbike.png";
 import beautyandcare from "../../../img/beautyandhealth.png";
 import groceries from "../../../img/groceries.png";
 
 const Data = [
-  { cat: "Categories", icon: Categories },
-  { cat: "Home", icon: Home },
-  { cat: "Fashion", icon: clothes },
-  { cat: "Electonics", icon: electronics },
-  { cat: "Mobiles", icon: Mobiles },
-  { cat: "Beauty and Health", icon: beautyandcare },
-  { cat: "Accessories", icon: accessories },
-  { cat: "AutoMotive", icon: automotive },
-  { cat: "Motorcycles", icon: motorcycles },
-  { cat: "Groceries", icon: groceries },
+  {
+    cat: "Home & Furniture",
+    icon: Home,
+    subcat: ["Decoration", "Furniture", "Lighting"],
+  },
+  {
+    cat: "Fashion & Accessories",
+    icon: clothes,
+    subcat: [
+      "tops",
+      "womens-dresses",
+      "womens-shoes",
+      "mens-shirts",
+      "mens-shoes",
+      "mens-watches",
+      "womens-watches",
+      "womens-bags",
+      "womens-jewellery",
+      "sunglasses",
+    ],
+  },
+  {
+    cat: "Electonics & Mobiles",
+    icon: electronics,
+    subcat: ["smartphones", "laptops"],
+  },
+  {
+    cat: "Beauty & Fragrance",
+    icon: beautyandcare,
+    subcat: ["fragrances", "skincare"],
+  },
+  { cat: "AutoMotive", icon: automotive, subcat: ["automotive", "motorcycle"] },
+  { cat: "Groceries", icon: groceries, subcat: ["groceries"] },
 ];
 export default Data;

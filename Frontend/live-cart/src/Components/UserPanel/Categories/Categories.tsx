@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import "./Categories.css";
 import Data from "./CategoriesData";
+import { Link } from "react-router-dom";
 
 const Categories: FC = () => {
   return (
@@ -20,13 +21,13 @@ const Categories: FC = () => {
       >
         {Data.map((cat, index) => (
           <SwiperSlide key={`cat-` + index}>
-            <a
-              className="d-flex flex-column align-items-center"
-              href="/react/porto/demo37/shop/?category=women"
+            <Link
+              className="d-flex flex-column align-items-center justify-content-center"
+              to="/shop"
             >
               <img src={cat.icon} />
               {cat.cat}
-            </a>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -42,13 +42,7 @@ const Nav: FC = () => {
             ))}
           </ul> */}
           <div className="header-search-wrapper submit-wrapper d-flex justify-content-between">
-            <input
-              type="search"
-              name="q1"
-              id="q1"
-              placeholder="Search..."
-              value=""
-            />
+            <input type="search" name="q1" id="q1" placeholder="Search..." />
             <button className="btn" title="search" type="submit">
               <i className="bx bx-search"></i>
             </button>
