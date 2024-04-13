@@ -23,3 +23,8 @@
   line-height: 24px;
   text-transform: uppercase;
 }
+
+.pagination {
+  justify-content: center;
+  margin-top: 10px !important;
+}

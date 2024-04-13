@@ -3,7 +3,7 @@ import "./ProductCard.css";
 
 const ProductCard: FC = () => {
   return (
-    <div className="p-2 col-6 col-sm-4 col-lg-3">
+    <div className="p-2 col-6 col-sm-4 col-lg-3 mb-2">
       <img
         src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTgzODM0NDU&ixlib=rb-1.2.1&q=80"
         className="product-img"
