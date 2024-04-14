@@ -10,7 +10,7 @@ const Shop: FC = () => {
       <Path />
       <div className="mx-4">
         <div className="row">
-          <Products itemsPerPage={10} />
+          <Products itemsPerPage={12} />
           <Sidebar />
         </div>
       </div>

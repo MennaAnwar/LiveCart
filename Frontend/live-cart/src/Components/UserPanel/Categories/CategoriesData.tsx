@@ -1,4 +1,3 @@
-import Categories from "../../../img/categories.png";
 import Home from "../../../img/Home.png";
 import clothes from "../../../img/clothes.png";
 import electronics from "../../../img/electronics.png";

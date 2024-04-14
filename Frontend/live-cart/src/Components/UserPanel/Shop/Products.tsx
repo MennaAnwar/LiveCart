@@ -1,16 +1,31 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import ProductCard from "./ProductCard/ProductCard";
+import { ProductsData } from "./ProductsData";
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  brand: string;
+  images: string[];
+}
 
 interface ItemsProps {
-  currentItems: number[];
+  currentItems: Product[];
 }
 
 const Items: FC<ItemsProps> = ({ currentItems }) => {
   return (
     <>
       {currentItems.map((item) => (
-        <ProductCard />
+        <ProductCard
+          img={item.images[0]}
+          brand={item.brand}
+          title={item.title}
+          id={item.id}
+          price={item.price}
+        />
       ))}
     </>
   );
@@ -22,15 +37,24 @@ interface ProductsProps {
 
 const Products: FC<ProductsProps> = ({ itemsPerPage }) => {
   const [itemOffset, setItemOffset] = useState(0);
-  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // Example items array
+  const [products, setProducts] = useState<Product[]>([]);
+  const [pageCount, setPageCount] = useState(0);
+
+  useEffect(() => {
+    ProductsData().then((data: any) => {
+      setProducts(data.products);
+      console.log(data.products);
+      console.log(data.total);
+      setPageCount(Math.ceil(data.total / itemsPerPage));
+    });
+  }, [itemsPerPage]);
 
   const endOffset = itemOffset + itemsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const currentItems = products.slice(itemOffset, endOffset);
 
   const handlePageClick = (event: { selected: number }) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * itemsPerPage) % products.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );

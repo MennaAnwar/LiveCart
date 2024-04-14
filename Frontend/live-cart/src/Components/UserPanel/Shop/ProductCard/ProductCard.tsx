@@ -1,23 +1,26 @@
 import { FC } from "react";
 import "./ProductCard.css";
 
-const ProductCard: FC = () => {
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  brand: string;
+  img: string;
+}
+
+const ProductCard: FC<Product> = ({ img, brand, price, title, id }) => {
   return (
-    <div className="p-2 col-6 col-sm-4 col-lg-3 mb-2">
-      <img
-        src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTgzODM0NDU&ixlib=rb-1.2.1&q=80"
-        className="product-img"
-        alt="Product image"
-      />
+    <div className="p-2 col-6 col-sm-4 col-lg-3 mb-2" id={`product-` + id}>
+      <img src={img} className="product-img" alt="Product image" />
       <div className="card-body">
-        <h6 className="card-subtitle mb-2 text-muted">Brand</h6>
-        <h5 className="card-title">Product Name</h5>
+        <h6 className="card-subtitle mb-2 text-muted">{brand}</h6>
+        <h5 className="card-title">{title}</h5>
         <div className="d-flex justify-content-between align-items-center">
           <div>
-            <p className="card-text mb-0 font-weight-bold">$149</p>
-            <del className="small text-muted">$199</del>
+            <p className="card-text mb-0 font-weight-bold">${price}</p>
           </div>
-          <a href="#" className="btn btn-primary">
+          <a href="#">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

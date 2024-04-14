@@ -11,8 +11,8 @@ const Categories: FC = () => {
   return (
     <>
       <Swiper
-        slidesPerView={8}
-        spaceBetween={30}
+        slidesPerView={6}
+        spaceBetween={5}
         pagination={{
           clickable: true,
         }}
