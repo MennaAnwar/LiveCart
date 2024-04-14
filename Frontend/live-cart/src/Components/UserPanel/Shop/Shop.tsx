@@ -6,15 +6,10 @@ import Products from "./Products";
 
 const Shop: FC = () => {
   return (
-    <main className="main">
-      <Path />
-      <div className="mx-4">
-        <div className="row">
-          <Products itemsPerPage={12} />
-          <Sidebar />
-        </div>
-      </div>
-    </main>
+    <>
+      <Products itemsPerPage={12} />
+      <Sidebar />
+    </>
   );
 };
 

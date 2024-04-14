@@ -4,3 +4,8 @@
   height: 200px;
   object-fit: contain;
 }
+
+.product-card {
+  text-decoration: none;
+  color: black;
+}

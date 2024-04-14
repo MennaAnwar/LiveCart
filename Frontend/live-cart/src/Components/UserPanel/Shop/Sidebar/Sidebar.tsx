@@ -12,7 +12,7 @@ import items from "../../Categories/CategoriesData";
 
 const Sidebar: FC = () => {
   return (
-    <div className="sidebar col-lg-3 skeleton-body skel-shop-products pb-lg-3 undefined loaded  order-lg-first">
+    <div className="sidebar col-lg-3 skeleton-body skel-shop-products undefined loaded order-lg-first d-none d-lg-block">
       <Accordion allowMultipleExpanded>
         {items.map((item, index) => (
           <AccordionItem key={index}>

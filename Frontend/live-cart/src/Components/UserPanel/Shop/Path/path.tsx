@@ -1,15 +1,15 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import "../Shop.css";
+import Context from "../../../../Context";
 
 const Path: FC = () => {
+  const { path } = useContext(Context);
   return (
     <nav className="breadcrumb-nav">
       <div className="Path">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="/react/porto/demo37/">
-              <i className="bx bx-home"></i>
-            </a>
+            <i className="bx bx-home"></i>
           </li>
           <li className="breadcrumb-item active">Shop</li>
         </ol>
