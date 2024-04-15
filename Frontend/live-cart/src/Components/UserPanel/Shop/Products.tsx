@@ -41,10 +41,12 @@ const Products: FC<ProductsProps> = ({ itemsPerPage }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const [products, setProducts] = useState<Product[]>([]);
   const [pageCount, setPageCount] = useState(0);
-  const { isLoading, setLoading } = useContext(Context);
+  const { isLoading, setLoading, setPath } = useContext(Context);
 
   useEffect(() => {
     setLoading(true);
+    setPath(null);
+
     ProductsData()
       .then((data: any) => {
         setProducts(data.products);
