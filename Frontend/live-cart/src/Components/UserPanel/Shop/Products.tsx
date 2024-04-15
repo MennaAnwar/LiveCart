@@ -1,7 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import ProductCard from "./ProductCard/ProductCard";
 import { ProductsData } from "./ProductsData";
+import Context from "../../../Context";
+import Loader from "../Loader/Loader";
 
 interface Product {
   id: number;
@@ -39,29 +41,31 @@ const Products: FC<ProductsProps> = ({ itemsPerPage }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const [products, setProducts] = useState<Product[]>([]);
   const [pageCount, setPageCount] = useState(0);
+  const { isLoading, setLoading } = useContext(Context);
 
   useEffect(() => {
-    ProductsData().then((data: any) => {
-      setProducts(data.products);
-      console.log(data.products);
-      console.log(data.total);
-      setPageCount(Math.ceil(data.total / itemsPerPage));
-    });
+    setLoading(true);
+    ProductsData()
+      .then((data: any) => {
+        setProducts(data.products);
+        setPageCount(Math.ceil(data.total / itemsPerPage));
+      })
+      .then(() => {
+        setLoading(false);
+      });
   }, [itemsPerPage]);
 
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = products.slice(itemOffset, endOffset);
 
   const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % products.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="col-lg-9 main-content ">
       <div className="row skeleton-body skel-shop-products d-flex justify-content-center flex-wrap">
         <Items currentItems={currentItems} />

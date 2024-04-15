@@ -1,6 +1,5 @@
 import { FC } from "react";
 import "./Shop.css";
-import Path from "./Path/path";
 import Sidebar from "./Sidebar/Sidebar";
 import Products from "./Products";
 

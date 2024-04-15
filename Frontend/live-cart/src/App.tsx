@@ -8,8 +8,10 @@ import Path from "./Components/UserPanel/Shop/Path/path";
 
 function App() {
   const [path, setPath] = useState("");
+  const [isLoading, setLoading] = useState(false);
+
   return (
-    <Context.Provider value={{ path, setPath }}>
+    <Context.Provider value={{ path, setPath, isLoading, setLoading }}>
       <div className="App">
         <Home />
         <main className="main">

@@ -6,6 +6,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Reviews from "../Reviews/Reviews";
 import Context from "../../../../Context";
+import Loader from "../../Loader/Loader";
 
 interface Product {
   images: string[];
@@ -21,9 +22,10 @@ interface Product {
 const ViewProduct: FC = () => {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState<Product | null>(null);
-  const { setPath } = useContext(Context);
+  const { setPath, isLoading, setLoading } = useContext(Context);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`https://dummyjson.com/products/${id}`)
       .then((response) => {
@@ -32,31 +34,28 @@ const ViewProduct: FC = () => {
         }
         setProductDetails(response.data);
         setPath(response.data.category + "/" + response.data.title);
-        console.log(response.data);
+        setLoading(false);
         return response.data;
       })
       .catch(function (error) {
         console.error("Failed to fetch data:", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [id]);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="container skeleton-body skel-shop-products loaded">
       <div className="product-single-container product-single-default">
         <div className="row">
           <div className="product-single-gallery col-lg-5 col-md-6">
-            {productDetails ? (
-              <ProductSwiper imgs={productDetails.images} />
-            ) : (
-              <p>Loading...</p>
-            )}
+            {productDetails && <ProductSwiper imgs={productDetails.images} />}
           </div>
           <div className="product-single-details col-lg-7 col-md-6">
-            {productDetails ? (
-              <ProductDetails product={productDetails} />
-            ) : (
-              <p>Loading...</p>
-            )}
+            {productDetails && <ProductDetails product={productDetails} />}
           </div>
         </div>
       </div>
