@@ -7,7 +7,7 @@ import ViewProduct from "./Components/UserPanel/Shop/ViewProduct/ViewProduct";
 import Path from "./Components/UserPanel/Shop/Path/path";
 
 function App() {
-  const [path, setPath] = useState();
+  const [path, setPath] = useState("");
   return (
     <Context.Provider value={{ path, setPath }}>
       <div className="App">

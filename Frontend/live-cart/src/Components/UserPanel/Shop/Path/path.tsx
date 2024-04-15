@@ -12,6 +12,11 @@ const Path: FC = () => {
             <i className="bx bx-home"></i>
           </li>
           <li className="breadcrumb-item active">Shop</li>
+          {path.split("/").map((path: string, index: number) => (
+            <li key={`path-` + index} className="breadcrumb-item active">
+              {path}
+            </li>
+          ))}
         </ol>
       </div>
     </nav>

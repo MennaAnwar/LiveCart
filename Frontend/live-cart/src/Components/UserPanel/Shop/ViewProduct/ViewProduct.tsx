@@ -1,9 +1,11 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import ProductSwiper from "./ProductSwiper";
 import "./ViewProduct.css";
 import ProductDetails from "./ProductDetails";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Reviews from "../Reviews/Reviews";
+import Context from "../../../../Context";
 
 interface Product {
   images: string[];
@@ -19,6 +21,7 @@ interface Product {
 const ViewProduct: FC = () => {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState<Product | null>(null);
+  const { setPath } = useContext(Context);
 
   useEffect(() => {
     axios
@@ -28,6 +31,7 @@ const ViewProduct: FC = () => {
           throw new Error(response.statusText);
         }
         setProductDetails(response.data);
+        setPath(response.data.category + "/" + response.data.title);
         console.log(response.data);
         return response.data;
       })
@@ -56,6 +60,7 @@ const ViewProduct: FC = () => {
           </div>
         </div>
       </div>
+      <Reviews />
     </div>
   );
 };
