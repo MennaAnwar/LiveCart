@@ -1,11 +1,19 @@
 import { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+// Properly import necessary CSS
 import "swiper/css";
+import "swiper/css/free-mode";
 import "swiper/css/effect-cube";
-import "swiper/css/pagination";
+import "swiper/css/thumbs";
+
 import { EffectCube, Pagination } from "swiper/modules";
 
-const PrdoctSwiper: FC = () => {
+interface Imgs {
+  imgs: string[];
+}
+
+const ProductSwiper: FC<Imgs> = ({ imgs }) => {
   return (
     <Swiper
       effect={"cube"}
@@ -20,20 +28,13 @@ const PrdoctSwiper: FC = () => {
       modules={[EffectCube, Pagination]}
       className="mySwiper"
     >
-      <SwiperSlide>
-        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-      </SwiperSlide>
+      {imgs.map((img, index) => (
+        <SwiperSlide key={`img-` + index}>
+          <img src={img} />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };
 
-export default PrdoctSwiper;
+export default ProductSwiper;
